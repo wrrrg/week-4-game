@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Crystals Collector</title>
+  </head>
+  <body>
+    <header>
+        <h1>Don't Be Poor!</h1>
+    </header>
+
+    <main>
+      <div class="rules">
+        <p>You're a freelancer who has a very different amount of income each month. You don't always have very much money! Try to pay your basic living expenses without going into serious debt. You have to pay four things each month: </p>
+        <ul>
+          <li>Rent - you have to pay this once a month.</li>
+          <li>Food - you have to pay for your groceries four times a month.</li>
+          <li>Utilities and Gas - you have to pay this once a month.</li>
+          <li>Insurance and Medical Expenses - you have to pay this at LEAST once a month.</li>
+        </ul>
+        <p>Some months will be good - if you end the month with extra, you can have a savings account! Maybe new shoes. Maybe a 401k. Who knows? The problem is, you don't know exactly how much each of these is going to cost this month. Good luck!</p>
+      </div>
+
+      <div class="monthly-income-div">
+        <h2>Your freelancing income this month: $<span id="income">0</span></h2>
+      </div>
+
+      <div class="cost-buttons">
+        <img src="" alt="pay rent" id="rent-button">
+        <img src="" alt="pay food" id="food-button">
+        <img src="" alt="pay utilities" id="utilities-button">
+        <img src="" alt="pay health costs" id="health-cost-button">
+      </div>
+
+      <div class="monthly-expenses-div">
+        <h2>You've spent $<span id="expenses">0</span> this month.</h2>
+        <button type="button" name="button" id="new-month-button">Start a new month!</button>
+
+      </div>
+
+      <div class="score">
+        <p id="game-message"></p>
+        <ul>
+          <li>Months you stayed above water: <span id="savings-months">0</span></li>
+          <li>Months you went into debt: <span id="debt-months">0</span></li>
+          <li>Total money saved during "savings months": <span id="savings-total">0</span></li>
+          <li>Total debt from "debt months": <span id="debt-total">0</span></li>
+          <li>Total net worth: <span id="net-balance">0</span></li>
+        </ul>
+      </div>
+
+
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/javascript/game.js"></script>
+
+
+  </body>
+</html>
+
+<!--
+var spentMoney = 0;
+var goodMonths = 0;
+var badMonths = 0;
+var savings = 0;
+var debt = 0;
+var netWorth = 0;
+
+var isBroke = false;
+var paidAll = false; -->
