@@ -11,13 +11,13 @@
 var  income = {
         clicks: 0,
         price: 0,
-        min: 500,
-        max: 2000
+        min: 900,
+        max: 1800
       },
     rentCost = {
         clicks: 0,
         price: 0,
-        min: 500,
+        min: 600,
         max: 900
       },
     foodCost = {
@@ -30,13 +30,13 @@ var  income = {
         clicks: 0,
         price: 0,
         min: 60,
-        max: 300
+        max: 150
       },
     healthCost = {
         clicks: 0,
         price: 0,
         min: 150,
-        max: 500
+        max: 450
       };
 
 var month = {};
