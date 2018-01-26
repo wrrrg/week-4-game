@@ -57,7 +57,7 @@ $(document).ready(function() {
 
   // Start A New Month
   $("#new-month-button").click(function() {
-    game.newGameButton();
+    game.newMonthButton();
   });
 
   //Cost Button Actions
@@ -250,7 +250,7 @@ var game = {
       $("#expenses").text(spentMoney);
   };
 },
-  newGameButton: function(){
+  newMonthButton: function(){
     game.areYouPaid();
 
     var lifeSucks = game.doesLifeSuck();
@@ -274,12 +274,13 @@ var game = {
     } else {
       $("#game-message").text("You haven't paid all your bills yet...");
     };
-  }
+  },
 };
 
 
 
 function init(){
+
   setAllCosts();
   newMonth(month);
   game.generateIllness();
