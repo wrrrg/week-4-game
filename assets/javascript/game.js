@@ -12,7 +12,7 @@ var  income = {
         clicks: 0,
         price: 0,
         min: 500,
-        max: 2500
+        max: 1800
       },
     rentCost = {
         clicks: 0,
@@ -36,11 +36,11 @@ var  income = {
         clicks: 0,
         price: 0,
         min: 150,
-        max: 1200
+        max: 300
       };
 
 var month = {};
-
+var healthIssues = '';
 // Score Counter Variables
 var spentMoney = 0;
 var goodMonths = 0;
@@ -57,64 +57,41 @@ $(document).ready(function() {
 
   // Start A New Month
   $("#new-month-button").click(function() {
-    newMonth(month);
-    $("#income").text(month.income.price);
-    $("#expenses").text(spentMoney);
+    game.areYouPaid();
+
+    if(isPaid){
+      game.endMonth();
+      newMonth(month);
+      $("#income").text(month.income.price);
+      $("#expenses").text(spentMoney);
+      $("#game-message").text("You made it...let's check the damage.")
+    } else {
+      $("#game-message").text("You haven't paid all your bills yet...");
+    };
   });
 
   //Cost Button Actions
   $("#rent-button").click(function() {
-    if(month.rentCost.clicks < 1){
-      spentMoney = spentMoney + month.rentCost.price;
-      month.rentCost.clicks += 1;
-      $("#game-message").text("The rent is too damn high!");
-      $("#expenses").text(spentMoney);
-  } else {
-      month.rentCost.clicks += 1;
-      $("#game-message").text("You already paid rent this month...lucky you.");
-    }
+    game.rentButton();
   });
 
   $("#food-button").click(function() {
-    if(month.foodCost.clicks < 4){
-      spentMoney = spentMoney + month.foodCost.price;
-      month.foodCost.clicks += 1;
-      $("#game-message").text("Gotta eat something I guess");
-      $("#expenses").text(spentMoney);
-  } else {
-      month.foodCost.clicks += 1;
-      $("#game-message").text("You already successfully fed yourself this month. Congrats.");
-    }
+    game.foodButton();
   });
 
   $("#utilities-button").click(function() {
-    if(month.utilCost.clicks < 1){
-      spentMoney = spentMoney + month.utilCost.price;
-      month.utilCost.clicks += 1;
-      $("#game-message").text("You kept the lights on!");
-      $("#expenses").text(spentMoney);
-  } else {
-      month.utilCost.clicks += 1;
-      $("#game-message").text("You already paid your utilities this month ya dummy.");
-    }
+    game.utilitiesButton();
   });
 
-  // $("#health-cost-button").click(function() {
-  //   var healthIssues = randomNumber(0,2);
-  //
-  //   if(healthIssues = 0){
-  //       month.healthCost.clicks +=1;
-  //       $("#game-message").text("You got lucky this month with a clean bill of health!");
-  //   } else if(healthIssues = 1) {
-  //     spentMoney = spentMoney + month.healthCost.price;
-  //     month.healthCost.clicks += 1;
-  //     $("#game-message").text("Everybody gets sick sometimes.");
-  //     $("#expenses").text(spentMoney);
-  // } else {
-  //     month.rentCost.clicks += 1;
-  //     $("#game-message").text("Super unlucky - you broke your leg.");
-  //   };
-  // });
+  $("#health-cost-button").click(function() {
+    game.healthCostButton();
+  });
+
+  //Check if you're paid or broke, forever
+  $(document).click(function() {
+    game.areYouPaid();
+    game.areYouBroke();
+  });
 
 });
 
@@ -179,8 +156,9 @@ var game = {
     }
   },
   areYouPaid: function(){
-    if(month.rentCost.clicks >= 1 && month.foodCost.clicks >= 4 && month.utilCost.clicks >= 1 && month.healthCost.clicks >=1){
+    if(month.rentCost.clicks >= 1 && month.foodCost.clicks >= 4 && month.utilCost.clicks >= 1 && month.healthCost.clicks >=healthIssues){
       isPaid = true;
+      $("#new-month-button").show();
       return isPaid
     } else {
       isPaid = false;
@@ -215,20 +193,65 @@ var game = {
       game.updateBalance();
       game.updateNetWorth();
       game.updateText();
+      $("img").show();
+      $("#new-month-button").hide();
+    };
+    isPaid = false;
+  },
+  // The Functions for the buttons
+  rentButton: function(){
+    if(month.rentCost.clicks < 1){
+      spentMoney = spentMoney + month.rentCost.price;
+      month.rentCost.clicks += 1;
+      $("#game-message").text("The rent is too damn high!");
+      $("#expenses").text(spentMoney);
+  } else {
+      month.rentCost.clicks += 1;
+      $("#game-message").text("You already paid rent this month...lucky you.");
+      $("#rent-button").hide();
     };
   },
-  rentButton: function(){
-
-  },
   foodButton: function(){
-
+    if(month.foodCost.clicks < 4){
+      spentMoney = spentMoney + month.foodCost.price;
+      month.foodCost.clicks += 1;
+      $("#game-message").text("Gotta eat something I guess");
+      $("#expenses").text(spentMoney);
+  } else {
+      month.foodCost.clicks += 1;
+      $("#game-message").text("You already successfully fed yourself this month. Congrats.");
+      $("#food-button").hide();
+    };
   },
   utilitiesButton: function(){
-
+    if(month.utilCost.clicks < 1){
+      spentMoney = spentMoney + month.utilCost.price;
+      month.utilCost.clicks += 1;
+      $("#game-message").text("You kept the lights on!");
+      $("#expenses").text(spentMoney);
+  } else {
+      month.utilCost.clicks += 1;
+      $("#game-message").text("You already paid your utilities this month ya dummy.");
+      $("#utilities-button").hide();
+    };
+  },
+  generateIllness: function(){
+    healthIssues = randomNumber(0,3);
+    return healthIssues;
   },
   healthCostButton: function(){
 
-  }
+    if(month.healthCost.clicks >= healthIssues){
+        month.healthCost.clicks +=1;
+        $("#game-message").text("You've stayed healthy for the rest of the month - no more medical costs.");
+        $("#health-cost-button").hide();
+    } else {
+      spentMoney = spentMoney + month.healthCost.price;
+      month.healthCost.clicks += 1;
+      $("#game-message").text("Everybody gets sick sometimes.");
+      $("#expenses").text(spentMoney);
+  };
+}
 };
 
 
@@ -236,7 +259,9 @@ var game = {
 function init(){
   setAllCosts();
   newMonth(month);
+  game.generateIllness();
   $("#income").text(month.income.price);
+  $("#new-month-button").hide();
 };
 
 init();
