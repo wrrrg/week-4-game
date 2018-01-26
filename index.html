@@ -2,7 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Crystals Collector</title>
+    <title>Don't Be Poor!</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body>
     <header>
@@ -10,45 +12,54 @@
     </header>
 
     <main>
-      <div class="rules">
-        <p>You're a waiter who has a very different amount of income each month. You don't always have very much money! Try to pay your basic living expenses without going into serious debt. You have to pay four things each month: </p>
-        <ul>
-          <li>Rent - you have to pay this once a month. (Note: your rent is going to be the same every month, so I hope you get a good deal!)</li>
-          <li>Food - you have to pay for your groceries four times a month.</li>
-          <li>Utilities and Gas - you have to pay this once a month.</li>
-          <li>Medical Expenses - you have to pay this at LEAST once a month.</li>
-        </ul>
-        <p>Some months will be good - if you end the month with extra, you can have a savings account! Maybe new shoes. Maybe a 401k. Who knows? The problem is, other than rent, you don't know exactly how much each of these is going to cost every month. Good luck!</p>
-      </div>
+      <section class="splash-screen show">
+        <p class="p-splash">Pull up those bootstraps...</p>
+      </section>
+      <section class="game-section hidden">
 
-      <div class="monthly-income-div">
-        <h2>Your income this month: $<span id="income">0</span></h2>
-        <h3>Click the images below to start paying your bills.</h3>
-      </div>
+        <div class="rules">
+          <p>You're a waiter who has a very different amount of income each month. You don't always have very much money! Try to pay your basic living expenses without going into serious debt. You have to pay four things each month: </p>
+          <ul>
+            <li>Rent - you have to pay this once a month. (Note: your rent is going to be the same every month, so I hope you get a good deal!)</li>
+            <li>Food - you have to pay for your groceries four times a month.</li>
+            <li>Utilities and Gas - you have to pay this once a month.</li>
+            <li>Medical Expenses - you have to pay this at LEAST once a month.</li>
+          </ul>
+          <p>Some months will be good - if you end the month with extra, you can have a savings account! Maybe new shoes. Maybe a 401k. Who knows? The problem is, other than rent, you don't know exactly how much each of these is going to cost every month. Good luck!</p>
+        </div>
 
-      <div class="cost-buttons">
-        <img src="" alt="pay rent" id="rent-button">
-        <img src="" alt="pay food" id="food-button">
-        <img src="" alt="pay utilities" id="utilities-button">
-        <img src="" alt="pay health costs" id="health-cost-button">
-      </div>
+        <div class="game-container">
+          <div class="monthly-income-div">
+            <h2>Your income this month: $<span id="income">0</span></h2>
+            <h3>Click the images below to start paying your bills.</h3>
+          </div>
 
-      <div class="monthly-expenses-div">
-        <h2>You've spent $<span id="expenses">0</span> this month.</h2>
-        <button type="button" name="button" id="new-month-button">End This Awful Month</button>
+          <div class="cost-buttons">
+            <img src="assets/images/rent.jpeg" alt="pay rent" id="rent-button">
+            <img src="assets/images/food.jpg" alt="pay food" id="food-button">
+            <img src="assets/images/utilities.jpeg" alt="pay utilities" id="utilities-button">
+            <img src="assets/images/healthcare.jpeg" alt="pay health costs" id="health-cost-button">
+          </div>
 
-      </div>
+          <div class="monthly-expenses-div">
+            <h2>You've spent $<span id="expenses">0</span> this month.</h2>
+            <button type="button" name="button" id="new-month-button" class="hidden">End This Awful Month</button>
 
-      <div class="score">
-        <p id="game-message"></p>
-        <ul>
-          <li>Months you stayed above water: <span id="savings-months">0</span></li>
-          <li>Months you went into debt: <span id="debt-months">0</span></li>
-          <li>Total money saved during good months: $<span id="savings-total">0</span></li>
-          <li>Total debt from bad months: $<span id="debt-total">0</span></li>
-          <li>Total net worth: <span id="net-balance">0</span></li>
-        </ul>
-      </div>
+          </div>
+
+          <div class="score">
+            <p id="game-message"></p>
+            <ul>
+              <li>Months you stayed above water: <span id="savings-months">0</span></li>
+              <li>Months you went into debt: <span id="debt-months">0</span></li>
+              <li>Total money saved during good months: $<span id="savings-total">0</span></li>
+              <li>Total debt from bad months: $<span id="debt-total">0</span></li>
+              <li>Total net worth: <span id="net-balance">0</span></li>
+            </ul>
+          </div>
+        </div>
+
+      </section>
 
 
     </main>

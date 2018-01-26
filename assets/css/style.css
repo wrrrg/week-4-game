@@ -1,0 +1,89 @@
+html {
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  width: 960px;
+  margin: 0 auto;
+  background: url("../images/background.jpg") no-repeat fixed center;
+}
+
+main {
+  background-color: rgba(110, 83, 74, .65);
+  margin: 20px;
+  padding: 20px;
+  color: rgb(228, 228, 228);
+  border: 2px solid black;
+  border-radius: 20px;
+}
+
+header h1{
+  text-align: center;
+  color: #223B4C;
+}
+
+/* Splash Screen */
+
+.p-splash {
+  font-size: 48px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+/* Main Game */
+.game-container {
+  text-align: center;
+}
+
+.game-container ul{
+  list-style: none;
+}
+
+img {
+  border-radius: 10px;
+  margin: 5px;
+  border: 2px solid black;
+}
+
+#new-month-button {
+  padding: 15px;
+  border: solid 3px rgba(76, 78, 80, 0.2);
+  border-radius: 20px;
+  background: rgba(29, 29, 29, 0.9);
+  color: rgba(168, 184, 169, 0.58);
+}
+/* Score CSS */
+.score p {
+  font-size: 20px;
+  color: white;
+}
+
+.score ul li {
+  padding: 2px;
+}
+
+#savings-total, #savings-months{
+  color: rgb(0, 255, 41);
+}
+
+#debt-months, #debt-total {
+  color: rgb(255, 6, 6);
+}
+/* Hide/Show Classes */
+
+/* Hide and Show classes */
+
+.hidden {
+  opacity: 0;
+  transition: opacity.5s ease-out;
+
+}
+
+.displayNone {
+  display:none;
+}
+
+.show {
+  opacity: 1;
+  transition: opacity .5s ease-out;
+}

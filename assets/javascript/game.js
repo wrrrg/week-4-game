@@ -81,6 +81,8 @@ $(document).ready(function() {
   $(document).click(function() {
     game.areYouPaid();
     game.areYouBroke();
+    $(".splash-screen").removeClass("show").addClass("displayNone");
+    $(".game-section").addClass("show");
   });
 
 });
@@ -148,7 +150,8 @@ var game = {
   areYouPaid: function(){
     if(month.rentCost.clicks >= 1 && month.foodCost.clicks >= 4 && month.utilCost.clicks >= 1 && month.healthCost.clicks >=healthIssues){
       isPaid = true;
-      $("#new-month-button").show();
+      $("#new-month-button").addClass("show").removeClass("displayNone");
+      $("img").hide();
       return isPaid
     } else {
       isPaid = false;
@@ -191,8 +194,8 @@ var game = {
       game.updateBalance();
       game.updateNetWorth();
       game.updateText();
-      $("img").show();
-      $("#new-month-button").hide();
+      $("img").show().removeClass("hidden");
+      $("#new-month-button").addClass("displayNone");
     };
     isPaid = false;
   },
@@ -206,7 +209,7 @@ var game = {
   } else {
       month.rentCost.clicks += 1;
       $("#game-message").text("You already paid rent this month...lucky you.");
-      $("#rent-button").hide();
+      $("#rent-button").addClass("hidden");
     };
   },
   foodButton: function(){
@@ -218,7 +221,7 @@ var game = {
   } else {
       month.foodCost.clicks += 1;
       $("#game-message").text("You already successfully fed yourself this month. Congrats.");
-      $("#food-button").hide();
+      $("#food-button").addClass("hidden");
     };
   },
   utilitiesButton: function(){
@@ -230,7 +233,7 @@ var game = {
   } else {
       month.utilCost.clicks += 1;
       $("#game-message").text("You already paid your utilities this month ya dummy.");
-      $("#utilities-button").hide();
+      $("#utilities-button").addClass("hidden");
     };
   },
   generateIllness: function(){
@@ -242,7 +245,7 @@ var game = {
     if(month.healthCost.clicks >= healthIssues){
         month.healthCost.clicks +=1;
         $("#game-message").text("You've stayed healthy for the rest of the month - no more medical costs.");
-        $("#health-cost-button").hide();
+        $("#health-cost-button").addClass("hidden");
     } else {
       spentMoney = spentMoney + month.healthCost.price;
       month.healthCost.clicks += 1;
@@ -285,7 +288,7 @@ function init(){
   newMonth(month);
   game.generateIllness();
   $("#income").text(month.income.price);
-  $("#new-month-button").hide();
+
 };
 
 init();
