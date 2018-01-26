@@ -208,7 +208,7 @@ var game = {
       $("#expenses").text(spentMoney);
   } else {
       month.rentCost.clicks += 1;
-      $("#game-message").text("You already paid rent this month...lucky you.");
+      $("#game-message").text("You paid rent this month...lucky you.");
       $("#rent-button").addClass("hidden");
     };
   },
@@ -220,7 +220,7 @@ var game = {
       $("#expenses").text(spentMoney);
   } else {
       month.foodCost.clicks += 1;
-      $("#game-message").text("You already successfully fed yourself this month. Congrats.");
+      $("#game-message").text("You successfully fed yourself this month. Congrats.");
       $("#food-button").addClass("hidden");
     };
   },
@@ -232,7 +232,7 @@ var game = {
       $("#expenses").text(spentMoney);
   } else {
       month.utilCost.clicks += 1;
-      $("#game-message").text("You already paid your utilities this month ya dummy.");
+      $("#game-message").text("You paid your utilities this month, no freezing for you!");
       $("#utilities-button").addClass("hidden");
     };
   },
