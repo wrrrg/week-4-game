@@ -12,13 +12,13 @@ var  income = {
         clicks: 0,
         price: 0,
         min: 500,
-        max: 1800
+        max: 2000
       },
     rentCost = {
         clicks: 0,
         price: 0,
-        min: 300,
-        max: 800
+        min: 500,
+        max: 900
       },
     foodCost = {
         clicks: 0,
@@ -36,7 +36,7 @@ var  income = {
         clicks: 0,
         price: 0,
         min: 150,
-        max: 300
+        max: 500
       };
 
 var month = {};
@@ -57,17 +57,7 @@ $(document).ready(function() {
 
   // Start A New Month
   $("#new-month-button").click(function() {
-    game.areYouPaid();
-
-    if(isPaid){
-      game.endMonth();
-      newMonth(month);
-      $("#income").text(month.income.price);
-      $("#expenses").text(spentMoney);
-      $("#game-message").text("You made it...let's check the damage.")
-    } else {
-      $("#game-message").text("You haven't paid all your bills yet...");
-    };
+    game.newGameButton();
   });
 
   //Cost Button Actions
@@ -176,6 +166,14 @@ var game = {
       return savings;
     };
   },
+
+  doesLifeSuck: function(){
+    if(isBroke && isPaid){
+      return true
+    } else {
+      return false;
+    };
+  },
   updateNetWorth: function(){
     netWorth = savings - debt;
     return netWorth;
@@ -236,7 +234,7 @@ var game = {
     };
   },
   generateIllness: function(){
-    healthIssues = randomNumber(0,3);
+    healthIssues = randomNumber(0,2);
     return healthIssues;
   },
   healthCostButton: function(){
@@ -251,7 +249,32 @@ var game = {
       $("#game-message").text("Everybody gets sick sometimes.");
       $("#expenses").text(spentMoney);
   };
-}
+},
+  newGameButton: function(){
+    game.areYouPaid();
+
+    var lifeSucks = game.doesLifeSuck();
+
+    if(isPaid){
+
+      var oldRent = month.rentCost.price;
+
+      game.endMonth();
+      newMonth(month);
+      month.rentCost.price = oldRent;
+
+      $("#income").text(month.income.price);
+      $("#expenses").text(spentMoney);
+
+      if(lifeSucks){
+        $("#game-message").text("You made it...let's check the damage.");
+      } else {
+        $("#game-message").text("That wasn't so bad I guess...");
+      }
+    } else {
+      $("#game-message").text("You haven't paid all your bills yet...");
+    };
+  }
 };
 
 
