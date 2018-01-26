@@ -13,13 +13,6 @@
 
       <section class="splash-screen show">
         <p class="p-splash">Pull up those bootstraps...</p>
-      </section>
-      <section class="game-section hidden">
-        
-        <div class="header">
-            <h1>Don't Be Poor!</h1>
-        </div>
-
         <div class="rules">
           <p>You're a waiter who has a very different amount of income each month. You don't always have very much money! Try to pay your basic living expenses without going into serious debt. You have to pay four things each month: </p>
           <ul>
@@ -30,6 +23,14 @@
           </ul>
           <p>Some months will be good - if you end the month with extra, you can have a savings account! Maybe new shoes. Maybe a 401k. Who knows? The problem is, other than rent, you don't know exactly how much each of these is going to cost every month. Good luck!</p>
         </div>
+
+      </section>
+      <section class="game-section hidden">
+
+        <div class="header">
+            <h1>Don't Be Poor!</h1>
+        </div>
+
 
         <div class="game-container">
           <div class="monthly-income-div">
@@ -47,11 +48,11 @@
           <div class="monthly-expenses-div">
             <h2>You've spent $<span id="expenses">0</span> this month.</h2>
             <button type="button" name="button" id="new-month-button" class="hidden">End This Awful Month</button>
-
+            <p id="game-message"></p>
           </div>
 
           <div class="score">
-            <p id="game-message"></p>
+
             <ul>
               <li>Months you stayed above water: <span id="savings-months">0</span></li>
               <li>Months you went into debt: <span id="debt-months">0</span></li>
