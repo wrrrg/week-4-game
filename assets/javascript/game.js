@@ -288,6 +288,7 @@ function init(){
   newMonth(month);
   game.generateIllness();
   $("#income").text(month.income.price);
+  $("#new-month-button").addClass("displayNone");
 
 };
 

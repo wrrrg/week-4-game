@@ -17,7 +17,8 @@ main {
   border-radius: 20px;
 }
 
-header h1{
+.header h1{
+  margin: 0 auto;
   text-align: center;
   color: #223B4C;
 }
