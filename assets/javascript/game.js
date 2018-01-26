@@ -187,7 +187,14 @@ var game = {
     $("#debt-months").text(badMonths);
     $("#savings-total").text(savings);
     $("#debt-total").text(debt);
-    $("#net-balance").text(netWorth);
+
+    if(netWorth > 0){
+     $("#net-balance").text("$" + netWorth);
+     $("#balance-li").css('color', 'black');
+   } else {
+     $("#net-balance").text("-$" + Math.abs(netWorth));
+     $("#balance-li").css('color', 'red');
+   }
   },
   endMonth: function(){
     if(isPaid){
